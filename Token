@@ -1,0 +1,20 @@
+// contracts/TestToken.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract TestToken is ERC20 {
+
+    string constant private _name = "Takoe token";
+    string constant private _symbol = "Takoe"; // Символ токена
+
+    constructor(uint256 initialSupply) ERC20(_name, _symbol) {
+        _mint(msg.sender, initialSupply * 10**8); // Учитывает количество десятичных чисел (8)
+    }
+
+    // Функция эмисии токена (минт)
+    function airDropToken(uint256 amount) public {
+        _mint(msg.sender, amount * 10**8); // Учитывает количество десятичных чисел (8)
+    }
+}
